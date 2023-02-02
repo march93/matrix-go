@@ -43,6 +43,7 @@ func TestEcho(t *testing.T) {
 	builder := new(strings.Builder)
 	io.Copy(builder, res.Body)
 
+	// Trim the response because we are passing a new line after the result
 	if strings.Compare(strings.Trim(builder.String(), "\r\n"), "1,2,3\n4,5,6\n7,8,9") != 0 {
 		t.Errorf("expected content of \n%s\ngot\n%s\n", "1,2,3\n4,5,6\n7,8,9", builder.String())
 	}
@@ -76,6 +77,7 @@ func TestInvert(t *testing.T) {
 	builder := new(strings.Builder)
 	io.Copy(builder, res.Body)
 
+	// Trim the response because we are passing a new line after the result
 	if strings.Compare(strings.Trim(builder.String(), "\r\n"), "1,4,7\n2,5,8\n3,6,9") != 0 {
 		t.Errorf("expected content of %s got %s", "1,4,7\n2,5,8\n3,6,9", builder.String())
 	}
@@ -109,6 +111,7 @@ func TestFlatten(t *testing.T) {
 	builder := new(strings.Builder)
 	io.Copy(builder, res.Body)
 
+	// Trim the response because we are passing a new line after the result
 	if strings.Compare(strings.Trim(builder.String(), "\r\n"), "1,2,3,4,5,6,7,8,9") != 0 {
 		t.Errorf("expected content of %s got %s", "1,2,3,4,5,6,7,8,9", builder.String())
 	}
@@ -142,6 +145,7 @@ func TestSum(t *testing.T) {
 	builder := new(strings.Builder)
 	io.Copy(builder, res.Body)
 
+	// Trim the response because we are passing a new line after the result
 	if strings.Compare(strings.Trim(builder.String(), "\r\n"), "45") != 0 {
 		t.Errorf("expected content of %s got %s", "45", builder.String())
 	}
@@ -175,6 +179,7 @@ func TestMultiply(t *testing.T) {
 	builder := new(strings.Builder)
 	io.Copy(builder, res.Body)
 
+	// Trim the response because we are passing a new line after the result
 	if strings.Compare(strings.Trim(builder.String(), "\r\n"), "362880") != 0 {
 		t.Errorf("expected content of %s got %s", "362880", builder.String())
 	}
