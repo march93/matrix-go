@@ -10,7 +10,7 @@ import (
 
 /*
  *	Start app with `go run .`
- *	For files, you can use 'file=@/path/matrix.csv', 'file=@/path/matrix-invalid.csv', or 'file=@/path/matrix-empty.csv'
+ *	For files, you can use 'file=@./matrix.csv', 'file=@./matrix-invalid.csv', or 'file=@./matrix-empty.csv'
  *	To run tests, use `go test`
  */
 
@@ -58,7 +58,7 @@ func readFile(w http.ResponseWriter, r *http.Request) [][]string {
 }
 
 /*
- *	curl -F 'file=@/path/matrix.csv' "localhost:8080/echo"
+ *	curl -F 'file=@./matrix.csv' "localhost:8080/echo"
  */
 func echo(w http.ResponseWriter, r *http.Request) {
 	records := readFile(w, r)
@@ -71,7 +71,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
- *	curl -F 'file=@/path/matrix.csv' "localhost:8080/invert"
+ *	curl -F 'file=@./matrix.csv' "localhost:8080/invert"
  */
 func invert(w http.ResponseWriter, r *http.Request) {
 	records := readFile(w, r)
@@ -99,7 +99,7 @@ func invert(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
- *	curl -F 'file=@/path/matrix.csv' "localhost:8080/flatten"
+ *	curl -F 'file=@./matrix.csv' "localhost:8080/flatten"
  */
 func flatten(w http.ResponseWriter, r *http.Request) {
 	records := readFile(w, r)
@@ -109,7 +109,7 @@ func flatten(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
- *	curl -F 'file=@/path/matrix.csv' "localhost:8080/sum"
+ *	curl -F 'file=@./matrix.csv' "localhost:8080/sum"
  */
 func sum(w http.ResponseWriter, r *http.Request) {
 	records := readFile(w, r)
@@ -130,7 +130,7 @@ func sum(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
- *	curl -F 'file=@/path/matrix.csv' "localhost:8080/multiply"
+ *	curl -F 'file=@./matrix.csv' "localhost:8080/multiply"
  */
 func multiply(w http.ResponseWriter, r *http.Request) {
 	records := readFile(w, r)
@@ -162,7 +162,7 @@ func validateData(records [][]string, w http.ResponseWriter) {
 	for _, row := range records {
 		if len(row) != rows {
 			// Row and column lengths should be equal
-			w.WriteHeader(http.StatusBadGateway)
+			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(fmt.Sprintln("error unequal rows and column lengths")))
 		}
 	}
