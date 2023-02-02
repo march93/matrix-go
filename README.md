@@ -7,9 +7,9 @@
 
 ## End points
 
-- curl -F 'file=@./matrix.csv' "localhost:8080/echo"
-- curl -F 'file=@./matrix.csv' "localhost:8080/invert"
-- curl -F 'file=@./matrix.csv' "localhost:8080/flatten"
-- curl -F 'file=@./matrix.csv' "localhost:8080/sum"
-- curl -F 'file=@./matrix.csv' "localhost:8080/multiply"
+- `curl -F 'file=@./matrix.csv' "localhost:8080/echo"`
+- `curl -F 'file=@./matrix.csv' "localhost:8080/invert"`
+- `curl -F 'file=@./matrix.csv' "localhost:8080/flatten"`
+- `curl -F 'file=@./matrix.csv' "localhost:8080/sum"`
+- `curl -F 'file=@./matrix.csv' "localhost:8080/multiply"`
 - For files, you can use `file=@./matrix.csv`, `file=@./matrix-invalid.csv`, or `file=@./matrix-empty.csv`
